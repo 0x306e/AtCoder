@@ -6,10 +6,14 @@ import java.io.InputStreamReader;
 
 public class LenoLibrary {
   
-  public String FastScanner() throws IOException {
+  public static String FastScanner() throws IOException {
     BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
     return br.readLine();
   }
   
+  public static String[] Splitter(String[] str2) {
+    String sepStr[] = Splitter(str2);
+    return sepStr;
+  }
   
 }
