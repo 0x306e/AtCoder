@@ -10,12 +10,7 @@ public class LenoLibrary {
     BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
     return br.readLine();
   }
-  
-  public static String[] Splitter(String str2) {
-    String sepStr[] = Splitter(str2);
-    return sepStr;
-  }
-  
+    
   public static String addString(String raw, String ad) {
     StringBuilder sb = new StringBuilder(raw);
     return sb.append(ad).toString();
