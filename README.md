@@ -1,2 +1,2 @@
 # AtCoder-in-Java
- https://atcoder.jp/?lang=ja の痕跡
+ https://atcoder.jp/ の痕跡 in Java
