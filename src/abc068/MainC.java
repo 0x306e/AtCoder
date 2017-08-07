@@ -3,16 +3,8 @@ package abc068;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.StringTokenizer;
 
-/**
- * @author 0x306e
- * 
- *         WA & TLE http://abc068.contest.atcoder.jp/submissions/1470941
- *
- */
 public class MainC {
 
   public static void main(String[] args) throws IOException {
@@ -23,32 +15,22 @@ public class MainC {
     target = Integer.parseInt(st.nextToken());
     num = Integer.parseInt(st.nextToken());
 
-    List<Integer> strtTo = new ArrayList<Integer>();
-    List<Integer> toGoal = new ArrayList<Integer>();
+    boolean[] to = new boolean[200000];
+    boolean[] from = new boolean[200000];
 
     for (int i = 0; i < num; i++) {
-      int tmp1, tmp2;
       str = br.readLine();
       st = new StringTokenizer(str);
-      tmp1 = Integer.parseInt(st.nextToken());
-      tmp2 = Integer.parseInt(st.nextToken());
-
-      if (tmp1 == 1) {
-        strtTo.add(tmp2);
-      } else if (tmp2 == target) {
-        toGoal.add(tmp1);
-      }
+      to[Integer.parseInt(st.nextToken())] = true;
+      from[Integer.parseInt(st.nextToken())] = true;
     }
 
     boolean flag = false;
-    for (int i = 0; i < strtTo.size(); i++) {
-      for (int j = 0; j < toGoal.size(); j++) {
-        if (strtTo.get(i) == toGoal.get(j)) {
+    for (int i = 0; i < 200000 && flag == false; i++) {
+      for (int j = 0; j < 200000 && flag == false; j++) {
+        if (to[i] == true && from[j] == true) {
           System.out.println("POSSIBLE");
           flag = true;
-          break;
-        }
-        if (flag) {
           break;
         }
       }
