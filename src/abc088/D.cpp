@@ -6,6 +6,7 @@ class Point;
 int dx[] = {1, 0, 0, -1};
 int dy[] = {0, 1, -1, 0};
 int cnt = 0;
+bool found = false;
 queue<Point> q;
 int H, W;
 char s[51][51];
@@ -20,10 +21,10 @@ public:
     };
 };
 
-bool bfs(Point p){
-    if(p.x < 0 || p.x >= H || p.y < 0 || p.y >= W) false;
-    if(s[p.x][p.y] == '#') return false;
-    if(p.x == H && p.y == W) return true;
+void bfs(Point p){
+    if(p.x < 0 || p.x >= H || p.y < 0 || p.y >= W) return;
+    if(s[p.x][p.y] == '#') return;
+    if(p.x == H-1 && p.y == W-1) found = true;
     s[p.x][p.y] = '#';
     q.push(Point(p.x+dx[0], p.y+dy[0]));
     q.push(Point(p.x+dx[1], p.y+dy[1]));
@@ -41,12 +42,14 @@ int main(int argc, char* argv[]){
             if(s[i][j] == '#') black++;
         }
     }
+    q.push(Point(0, 0));
     for(int i = 0; i < H + W; i++){
         cnt++;
-        copy(q.cbegin(), q.cend(), que);
+        queue<Point> que = queue<Point>(q);
         while(!q.empty()) q.pop();
         while(!que.empty()){
-            if(bfs(que.front())){
+            bfs(que.front());
+            if(found){
                 cout << H * W - black - cnt << endl;
                 return 0;
             }
