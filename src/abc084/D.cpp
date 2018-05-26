@@ -16,23 +16,26 @@ bool isprime(int N){
 
 int main(int argc, char* argv[]){
     int Q;
-    int l[10001], r[10001];
+    int l[1000001], r[100001];
     vector<int> prime;
     vector<int> v;
     cin >> Q;
     rep(i, Q){
         cin >> l[i] >> r[i];
     }
-    for(int i = 2; i < 10000; i++){
+    for(int i = 2; i < 100000; i++){
         if(isprime(i)) prime.push_back(i);
     }
     for(auto n:prime){
-        if(isprime((n+1)/2)) v.push_back(n);
+        for(auto m:prime){
+            if((n+1)/2 == m) v.push_back(n);
+        }
     }
     rep(i, Q){
         int ans = 0;
         for(int n:v){
             if(l[i] <= n && n <= r[i]) ans++;
+            if(r[i] < n) break;
         }
         cout << ans << endl;
     }
