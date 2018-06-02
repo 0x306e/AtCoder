@@ -7,5 +7,11 @@ using namespace std;
 typedef long long ll;
 
 int main(int argc, char* argv[]){
-
+    int a, b, c, d;
+    cin >> a >> b >> c >> d;
+    int l = a + b;
+    int r = c + d;
+    if(l < r) cout << "Right" << endl;
+    else if(l == r) cout << "Balanced" << endl;
+    else cout << "Left" << endl;
 }

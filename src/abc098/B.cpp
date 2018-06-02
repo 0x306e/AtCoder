@@ -12,18 +12,20 @@ int main(int argc, char* argv[]){
     string al = "abcdefghijklmnopqrstuvwxyz";
     cin >> n >> s;
 
-    rep(i, n-1){
-        map<bool> x = {};
-        map<bool> y = {};
-        int cnta = 0, cntb = 0;
-        rep(j, n-1){
-            if(j < i) x[s[i]] = true;
-            else y[s[i]] = true;
+    rep(i, n){
+        int cnt = 0;
+        bool exist[2][128] = {};
+        rep(j, n){
+            if(i <= j){
+                exist[0][s[i]] = true;
+            } else {
+                exist[1][s[i]] = true;
+            }
         }
-        for(auto a : x) if(a) cnta++;
-        for(auto a : y) if(a) cntb++;
-        ans = max(ans, min(cnta, cntb));
+        rep(j, 96, 128){
+            if(exist[0][j] && exist[1][j]) cnt++;
+        }
+        ans = std::max(ans, cnt);
     }
-
-    cout << ans << endl;
+     cout << ans << endl;
 }

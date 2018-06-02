@@ -7,5 +7,13 @@ using namespace std;
 typedef long long ll;
 
 int main(int argc, char* argv[]){
+    ll x, y;
+    cin >> x >> y;
 
+    int cnt = 0;
+    while(y >= x){
+        x *= 2;
+        cnt++;
+    }
+    cout << cnt << endl;
 }

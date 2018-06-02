@@ -7,5 +7,19 @@ using namespace std;
 typedef long long ll;
 
 int main(int argc, char* argv[]){
+    int n, a, b, cnt = 0;
+    cin >> n >> a >> b;
+    rep(i, 1, n+1){
+        int k = i;
+        int sum = 0;
+        while(k > 0){
+            sum += k % 10;
+            k /= 10;
+        }
+        if(a <= sum && sum <= b){
+            cnt += i;
+        }
+    }
+    cout << cnt << endl;
 
 }
