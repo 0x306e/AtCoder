@@ -8,21 +8,23 @@ typedef long long ll;
 
 int main(int argc, char* argv[]){
     int n;
-    vector<int> v;
-    int tmp, raw = 0, sm = 0;
+    int tmp;
     cin >> n;
+    vector<int> v;
     rep(i, n){
         cin >> tmp;
         v.push_back(tmp - (i+1));
     }
 
-    sort(v.begin(), v.end());
-    int b = v[(n-1)/2];
-    int ans = 0;
-
-    for(auto a : v){
-        ans += abs(a - b);
+    sort(v.begin(), v.end(), greater<int>());
+    int b = v[n/2];
+    int c = v[n/2+1];
+    ll mna = 0, mnb = 0;
+    
+    rep(i, v.size()){
+        mna += abs(v[i] - b);
+        mnb += abs(v[i] - c);
     }
-    cout << ans << endl;
+    cout << min(mna, mnb) << endl;
 }
 
